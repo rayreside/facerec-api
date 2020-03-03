@@ -33,7 +33,7 @@ app.post('/imageurl', apiCall(db));
 app.get('/profile/:id', Profile(db));
 
 const PORT = process.env.PORT;
-app.listen(PORT, () => {
+app.listen(PORT || 3000, () => {
     console.log('running on port', PORT);
 });
 
