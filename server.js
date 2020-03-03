@@ -12,10 +12,8 @@ const app = express();
 const db = knex({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
-        user: 'postgres',
-        password: '2364',
-        database: 'facerec'
+        connectionString: process.env.DATABASE_URL,
+        ssl: true
     }
 });
 
@@ -23,8 +21,8 @@ app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-// app.get('/', (req, res) => {
-// });
+app.get('/', (req, res) => {
+});
 
 app.post('/signin', SignIn(db, bcrypt));
 app.post('/register', Register(db, bcrypt));
